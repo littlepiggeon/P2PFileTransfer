@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "P2PFileTransfer"
+version = "1.0.0"
+description = "P2P文件传输"
+authors = ["littlepiggeon <xiezichen2023@hotmail.com>"]
+#readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+termcolor = "^2.4.0"
+
+[[tool.poetry.source]]
+name = "mirrors"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
+priority = "default"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
