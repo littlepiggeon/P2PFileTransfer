@@ -36,7 +36,7 @@ try:
              'filename': basename(args.file),
              'size': information.st_size}))
         debug(
-            f'The client reply {client.recv(1024).decode('utf-8')} is received, and basic file information is transmitted.')
+            f'The client reply {client.recv(1024).decode("utf-8")} is received, and basic file information is transmitted.')
         client.sendall('ok'.encode('utf-8'))
         for i in '43210':
             sleep(1)
@@ -46,7 +46,7 @@ try:
             client.send(data)
             rate = fd.tell() / information.st_size
             print(colored(f'{rate * 100:.2f}%', 'yellow'),
-                  f'[{round(rate * 50) * colored('=', 'green'):-<50}]',
+                  f'[{colored(round(rate * 50) *"=","green"):-<50}]',
                   f'{fd.tell()}B / {information.st_size}B',
                   end='\r')
     info('Send finished')

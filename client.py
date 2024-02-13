@@ -19,7 +19,7 @@ client.setblocking(True)
 client.connect((args.ip, args.port))
 information = loads(client.recv(1024))
 if information['info'] == 'start':
-    print(f'Filename:{information['filename']}；\nFile size:{information['size']}')
+    print(f'Filename:{information["filename"]}；\nFile size:{information["size"]}')
     client.sendall('yes'.encode('utf-8'))
     debug('The message was send')
     debug('Server reply:' + client.recv(1024).decode('utf-8'))
@@ -31,12 +31,12 @@ if information['info'] == 'start':
             rate = fd.tell() / information['size']
             print(
                 colored(f'{rate * 100:.2f}%', 'blue'),
-                f'[{round(rate * 50) * colored("=", "green"):-<50}]',
+                f'[{colored(round(rate * 50) * "=","green"):-<50}]',
                 f'{fd.tell()}{colored("B", "yellow")} / {information['size']}{colored("B", "yellow")}',
                 end='\r')
             if fd.tell() >= information['size']: break
     info('Receive complete.')
-    cprint('\nReceive complete.', 'green')
+    cprint('\nReceive complete.'.center(50,'*'), 'green')
 else:
     client.close()
     warning('message is not right.')
